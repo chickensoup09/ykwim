@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090910">
+<title>AURA AUTHORITY™ | Official Investigation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap');
+
+:root {
+  --bg:#090910;
+  --panel:#11111c;
+  --purple:#a855f7;
+  --pink:#f43f8c;
+  --lime:#c6ff55;
+  --white:#f8f7ff;
+  --muted:#89889f;
+}
+
+* {box-sizing:border-box;margin:0;padding:0}
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Space Grotesk',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body:before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+  radial-gradient(circle at 15% 15%,#6b21a822,transparent 35%),
+  radial-gradient(circle at 85% 75%,#be185d18,transparent 35%);
+  z-index:-1;
+}
+
+.container {
+  width:100%;
+  max-width:680px;
+  margin:auto;
+  padding:22px 18px 55px;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0 25px;
+  border-bottom:1px solid #ffffff16;
+}
+
+.logo {
+  font-family:Orbitron,sans-serif;
+  font-size:13px;
+  letter-spacing:1.5px;
+  font-weight:800;
+}
+
+.logo span {color:var(--lime)}
+
+.live {
+  font-size:10px;
+  color:var(--lime);
+  letter-spacing:1px;
+}
+
+.live:before {
+  content:"●";
+  margin-right:7px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink {50%{opacity:.2}}
+
+.hero {
+  text-align:center;
+  padding:48px 5px 20px;
+}
+
+.eyebrow {
+  display:inline-block;
+  border:1px solid #a855f755;
+  color:#d8a7ff;
+  background:#a855f713;
+  padding:8px 13px;
+  border-radius:30px;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:23px;
+}
+
+h1 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(28px,7vw,46px);
+  line-height:1.2;
+  letter-spacing:-1px;
+}
+
+h1 span {
+  color:var(--lime);
+  text-shadow:0 0 25px #c6ff5544;
+}
+
+.subtitle {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  max-width:440px;
+  margin:18px auto;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin:28px 0;
+}
+
+.stat {
+  background:#ffffff08;
+  border:1px solid #ffffff12;
+  padding:14px 5px;
+  border-radius:13px;
+}
+
+.stat strong {
+  display:block;
+  color:var(--lime);
+  font-family:Orbitron,sans-serif;
+  font-size:17px;
+}
+
+.stat small {
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  margin-top:5px;
+  letter-spacing:1px;
+}
+
+.scan-card {
+  background:linear-gradient(145deg,#171322,#10101b);
+  border:1px solid #a855f733;
+  border-radius:25px;
+  padding:25px 17px;
+  text-align:center;
+  box-shadow:0 20px 70px #0008;
+}
+
+.scan-label {
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+
+.scanner {
+  width:min(250px,75vw);
+  aspect-ratio:1;
+  margin:24px auto;
+  border-radius:50%;
+  position:relative;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+.ring {
+  position:absolute;
+  inset:0;
+  border:1px solid #a855f777;
+  border-radius:50%;
+  animation:rotate 9s linear infinite;
+}
+
+.ring:before,.ring:after {
+  content:"";
+  position:absolute;
+  border:1px solid #c084fc44;
+  border-radius:50%;
+  inset:15px;
+}
+
+.ring:after {
+  inset:30px;
+  border-color:#f43f8c66;
+}
+
+.ring2 {
+  position:absolute;
+  inset:38px;
+  border:2px dashed #c084fc77;
+  border-radius:50%;
+  animation:rotate 5s linear infinite reverse;
+}
+
+.core {
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  background:radial-gradient(circle,#7c3aed55,#211034 65%,#110d1d);
+  border:1px solid #c084fc99;
+  box-shadow:0 0 35px #a855f755,inset 0 0 30px #a855f744;
+  display:grid;
+  place-items:center;
+  font-size:48px;
+  z-index:2;
+  transition:.3s;
+}
+
+.scanner:active .core {
+  transform:scale(.9);
+  box-shadow:0 0 65px #d946ef;
+}
+
+.scanner.scanning .core {
+  animation:pulse .8s infinite alternate;
+}
+
+.scanner.scanning .ring {
+  animation-duration:2s;
+  border-color:var(--lime);
+}
+
+@keyframes rotate {to{transform:rotate(360deg)}}
+@keyframes pulse {
+  to {transform:scale(1.12);box-shadow:0 0 65px #a855f7}
+}
+
+.scan-instruction {
+  color:var(--lime);
+  font-size:12px;
+  letter-spacing:1px;
+  animation:blink 1.4s infinite;
+}
+
+.scan-card h2 {
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.scan-card p {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.notice {
+  color:#85849a;
+  font-size:10px;
+  margin-top:18px;
+}
+
+#analysis {
+  display:none;
+  text-align:center;
+  padding:55px 5px;
+}
+
+#analysis h2 {
+  font-family:Orbitron,sans-serif;
+  font-size:23px;
+  margin-bottom:18px;
+}
+
+.analysis-icon {
+  font-size:50px;
+  margin-bottom:25px;
+  animation:pulse 1s infinite alternate;
+}
+
+#analysisText {
+  color:var(--lime);
+  min-height:25px;
+  font-size:13px;
+  margin:17px 0;
+}
+
+.progress-bg {
+  height:8px;
+  border-radius:20px;
+  background:#ffffff15;
+  overflow:hidden;
+  margin:20px 0;
+}
+
+#progress {
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,var(--purple),var(--pink),var(--lime));
+  transition:width .15s;
+}
+
+#percentage {
+  font-family:Orbitron,sans-serif;
+  color:var(--lime);
+}
+
+#result {
+  display:none;
+  text-align:center;
+  padding:35px 0;
+}
+
+.verdict {
+  border:1px solid #f43f8c66;
+  background:linear-gradient(145deg,#291027,#17101f);
+  border-radius:22px;
+  padding:30px 15px;
+  position:relative;
+  overflow:hidden;
+}
+
+.warning {
+  color:#ff749e;
+  font-size:10px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+}
+
+.verdict h2 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(29px,8vw,43px);
+  color:#ff4f8b;
+  line-height:1.25;
+  text-shadow:0 0 25px #f43f8c66;
+}
+
+.verdict h3 {
+  color:var(--lime);
+  margin:16px 0;
+  font-size:21px;
+}
+
+.meme {
+  font-size:100px;
+  margin:20px 0;
+  animation:shake .4s infinite;
+  filter:drop-shadow(0 0 25px #f43f8c88);
+}
+
+@keyframes shake {
+  0%,100%{transform:rotate(-4deg) scale(1)}
+  50%{transform:rotate(4deg) scale(1.07)}
+}
+
+.roast {
+  font-size:16px;
+  line-height:1.8;
+  color:#f5d5e7;
+  margin:15px 0;
+}
+
+.score {
+  background:#ffffff0c;
+  border:1px solid #ffffff22;
+  padding:20px;
+  border-radius:15px;
+  margin:20px 0;
+}
+
+.score strong {
+  font-family:Orbitron,sans-serif;
+  color:#ff4f8b;
+  font-size:35px;
+}
+
+.score small {
+  display:block;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.tag {
+  display:inline-block;
+  padding:9px 13px;
+  border-radius:20px;
+  color:#d8a7ff;
+  background:#a855f722;
+  font-size:11px;
+  margin:5px;
+}
+
+button {
+  border:0;
+  border-radius:30px;
+  padding:15px 23px;
+  font-family:inherit;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.replay {
+  background:var(--lime);
+  color:#101010;
+  margin-top:20px;
+  width:100%;
+}
+
+footer {
+  text-align:center;
+  color:#66657b;
+  font-size:10px;
+  margin-top:30px;
+  letter-spacing:1px;
+}
+
+.glitch {
+  animation:glitch .13s infinite;
+}
+
+@keyframes glitch {
+  0%{transform:translate(2px,-2px)}
+  25%{transform:translate(-2px,2px)}
+  50%{transform:translate(2px,2px)}
+  75%{transform:translate(-2px,-2px)}
+}
+
+.flash {
+  position:fixed;
+  inset:0;
+  background:white;
+  pointer-events:none;
+  z-index:10;
+  animation:flash .55s forwards;
+}
+
+@keyframes flash {
+  0%{opacity:0}
+  20%{opacity:.8}
+  100%{opacity:0}
+}
+
+@media(max-width:380px) {
+  .container{padding:15px 12px 35px}
+  .stats{gap:5px}
+  .stat strong{font-size:14px}
+  .scan-card{padding:20px 12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <div class="logo">AURA <span>AUTHORITY™</span></div>
+  <div class="live">SYSTEM ONLINE</div>
+</header>
+
+<main>
+
+<section id="home">
+
+<div class="hero">
+  <div class="eyebrow">DEPARTMENT OF UNNECESSARY INVESTIGATIONS</div>
+  <h1>YOUR AURA<br>HAS BEEN <span>QUESTIONED.</span></h1>
+  <p class="subtitle">
+    Our advanced AI-powered investigation system
+    has detected suspicious levels of NPC behaviour.
+    Your aura requires immediate verification.
+  </p>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <strong>99.9%</strong>
+    <small>ACCURACY*</small>
+  </div>
+  <div class="stat">
+    <strong>0.7</strong>
+    <small>BRAIN CELLS</small>
+  </div>
+  <div class="stat">
+    <strong>2026</strong>
+    <small>ESTABLISHED</small>
+  </div>
+</div>
+
+<div class="scan-card">
+  <div class="scan-label">BIOMETRIC AURA INTERFACE // 001</div>
+
+  <div class="scanner" id="scanner" role="button"
+       tabindex="0" aria-label="Activate aura scanner">
+    <div class="ring"></div>
+    <div class="ring2"></div>
+    <div class="core" id="core">✋</div>
+  </div>
+
+  <h2 id="scanTitle">INITIATE AURA SCAN</h2>
+  <p id="scanDescription">
+    Place your finger on the scanner and hold.
+    Your destiny is about to be exposed.
+  </p>
+
+  <div class="scan-instruction" id="instruction">
+    [ TAP THE SCANNER TO BEGIN ]
+  </div>
+</div>
+
+<p class="notice">
+  *Accuracy scientifically approved by absolutely nobody.
+  No actual biometrics are collected.
+</p>
+
+</section>
+
+
+<section id="analysis">
+
+  <div class="analysis-icon">🧬</div>
+  <h2>SUBJECT UNDER INVESTIGATION</h2>
+  <p id="analysisText">Establishing connection...</p>
+
+  <div class="progress-bg">
+    <div id="progress"></div>
+  </div>
+
+  <div id="percentage">0%</div>
+
+  <p class="notice">
+    DO NOT INTERRUPT THE INVESTIGATION.
+  </p>
+
+</section>
+
+
+<section id="result">
+
+  <div class="verdict">
+
+    <div class="warning">
+      ⚠ OFFICIAL INVESTIGATION REPORT ⚠
+    </div>
+
+    <h2>BRO IS<br>COOKED. 💀</h2>
+
+    <div class="meme">🤡</div>
+
+    <h3>CHUTIYA BANAYA TUMKO!</h3>
+
+    <p class="roast">
+      Congratulations.<br>
+      You just scanned your screen for absolutely NOTHING.<br><br>
+      Kya laga tha? Soulmate milega?<br>
+      Bhai, pehle dimaag toh dhoondh le. 😭
+    </p>
+
+    <div class="score">
+      <small>YOUR OFFICIAL AURA SCORE</small>
+      <strong>-999</strong>
+      <small>STATUS: BEYOND REPAIR</small>
+    </div>
+
+    <div class="tag">NPC DETECTED</div>
+    <div class="tag">BRAIN NOT FOUND</div>
+    <div class="tag">CERTIFIED CHUTIYA</div>
+
+    <p class="roast">
+      Get the fuck out of here. 😂
+    </p>
+
+  </div>
+
+  <button class="replay" onclick="restart()">
+    INVESTIGATE ANOTHER VICTIM ↗
+  </button>
+
+</section>
+
+</main>
+
+<footer>
+  AURA AUTHORITY™ · NO REFUNDS · NO MERCY<br>
+  THIS IS A PARODY WEBSITE.
+</footer>
+
+</div>
+
+
+<script>
+
+// ORIGINAL GENERATED SOUND EFFECTS
+// No external sound files or audio links.
+
+let audioContext = null;
+
+function initAudio() {
+  if(!audioContext) {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+    if(AudioContextClass) audioContext = new AudioContextClass();
+  }
+
+  if(audioContext && audioContext.state === "suspended") {
+    audioContext.resume();
+  }
+}
+
+function tone(freq,duration,type="sine",volume=.12) {
+  if(!audioContext) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(freq,audioContext.currentTime);
+
+  gain.gain.setValueAtTime(volume,audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    .001,audioContext.currentTime+duration
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime+duration);
+}
+
+function scanSound() {
+  tone(520,.12,"sine");
+}
+
+function revealSound() {
+  tone(150,.6,"sawtooth",.17);
+  setTimeout(()=>tone(600,.2,"square",.1),180);
+  setTimeout(()=>tone(950,.35,"sawtooth",.12),350);
+}
+
+// VOICE REVEAL
+const roastAudio = new Audio("roast.mp3");
+
+roastAudio.preload = "auto";
+
+function speakRoast() {
+    roastAudio.currentTime = 0;
+    roastAudio.play().catch(error => {
+        console.log("Audio playback failed:", error);
+    });
+}
+  if(!("speechSynthesis" in window)) return;
+
+  window.speechSynthesis.cancel();
+
+  const speech = new SpeechSynthesisUtterance(
+    "Chutiya banaya tumko! Ha ha ha! You have been fooled! " +
+    "Bro is cooked! Get the fuck out!"
+  );
+
+  speech.lang = "hi-IN";
+  speech.rate = 1.08;
+  speech.pitch = 1.12;
+  speech.volume = 1;
+
+  window.speechSynthesis.speak(speech);
+}
+
+const scanner = document.getElementById("scanner");
+let running = false;
+let scanTimer = null;
+
+const messages = [
+  "Connecting to the Aura Authority...",
+  "Detecting suspicious brain activity...",
+  "Searching for remaining brain cells...",
+  "Checking Instagram reel addiction...",
+  "Calculating NPC probability...",
+  "Your family has been notified...",
+  "CRITICAL AURA FAILURE DETECTED..."
+];
+
+function startScan() {
+  if(running) return;
+
+  running = true;
+  initAudio();
+
+  if(navigator.vibrate) navigator.vibrate(60);
+
+  document.getElementById("home").style.display = "none";
+  document.getElementById("analysis").style.display = "block";
+
+  scanner.classList.add("scanning");
+
+  let progress = 0;
+
+  scanTimer = setInterval(() => {
+    progress = Math.min(
+      progress + Math.floor(Math.random()*7)+3,
+      100
+    );
+
+    document.getElementById("progress").style.width =
+      progress+"%";
+
+    document.getElementById("percentage").innerText =
+      progress+"%";
+
+    const index = Math.min(
+      Math.floor(progress/15),
+      messages.length-1
+    );
+
+    document.getElementById("analysisText").innerText =
+      messages[index];
+
+    scanSound();
+
+    if(progress >= 100) {
+      clearInterval(scanTimer);
+
+      setTimeout(showReveal,700);
+    }
+
+  },430);
+}
+
+function showReveal() {
+  scanner.classList.remove("scanning");
+
+  document.body.classList.add("glitch");
+
+  const flash = document.createElement("div");
+  flash.className = "flash";
+  document.body.appendChild(flash);
+
+  revealSound();
+
+  document.getElementById("analysis").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  if(navigator.vibrate) {
+    navigator.vibrate([150,80,250,80,350]);
+  }
+
+  setTimeout(()=>{
+    document.body.classList.remove("glitch");
+    flash.remove();
+  },600);
+
+  // Automatically attempt the voice reveal.
+  // Browser speech support and voice availability vary.
+  setTimeout(speakRoast,300);
+}
+
+function restart() {
+  clearInterval(scanTimer);
+  if("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  running = false;
+
+  document.getElementById("result").style.display = "none";
+  document.getElementById("analysis").style.display = "none";
+  document.getElementById("home").style.display = "block";
+
+  document.getElementById("progress").style.width = "0%";
+  document.getElementById("percentage").innerText = "0%";
+
+  document.getElementById("analysisText").innerText =
+    "Establishing connection...";
+
+  document.body.classList.remove("glitch");
+}
+
+// Only a deliberate scanner interaction starts the prank.
+scanner.addEventListener("click",startScan);
+
+scanner.addEventListener("keydown",event=>{
+  if(event.key==="Enter" || event.key===" ") {
+    event.preventDefault();
+    startScan();
+  }
+});
+
+</script>
+</body>
+</html>
